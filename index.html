@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="es" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ingeniería en Ciencia de Datos · Universidad del Magdalena</title>
+  <meta name="description" content="Estudia Ingeniería en Ciencia de Datos en la Universidad del Magdalena: 140 créditos, 10 cuatrimestres, modalidad híbrida presencial-virtual.">
+  <meta name="theme-color" content="#050a1f">
+  <meta property="og:title" content="Ingeniería en Ciencia de Datos · Universidad del Magdalena">
+  <meta property="og:description" content="Convierte datos en decisiones que cambian el mundo.">
+  <meta property="og:image" content="assets/logo-512.png">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/logo.webp">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#programa">Saltar al contenido</a>
+
+  <!-- Barra superior: aparece cuando termina la animación del hero -->
+  <header class="site-header" id="site-header">
+    <a class="brand" href="#top" aria-label="Inicio">
+      <img src="assets/favicon.png" alt="" width="32" height="32">
+      <span class="brand__text">
+        <strong>Ciencia de Datos</strong>
+        <small>Universidad del Magdalena</small>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Secciones">
+      <a href="#programa">Programa</a>
+      <a href="#por-que">¿Por qué aquí?</a>
+      <a href="#perfiles">Perfiles</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#mision-vision">Misión y visión</a>
+    </nav>
+    <a class="btn btn--primary btn--sm" href="#inscripcion">Inscríbete</a>
+  </header>
+
+  <main>
+    <!-- 1. HERO: la nube de 0 y 1 forma el logo al hacer scroll -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__sticky">
+        <div class="hero__bg" aria-hidden="true">
+          <div class="hero__nebula"></div>
+          <div class="hero__rings"></div>
+          <div class="hero__grid"></div>
+        </div>
+        <canvas class="hero__canvas" id="particles" aria-hidden="true"></canvas>
+        <div class="hero__logo" id="hero-logo">
+          <img src="assets/logo.webp" alt="Logo de Ingeniería en Ciencia de Datos, Universidad del Magdalena" width="1200" height="1200">
+        </div>
+        <div class="hero__copy" id="hero-copy">
+          <h1 class="hero__title" id="hero-title" data-blur-words>Convierte datos en decisiones que cambian el mundo</h1>
+          <p class="hero__subtitle">Estudia Ingeniería en Ciencia de Datos y sé parte de la profesión del futuro.</p>
+        </div>
+        <div class="scroll-hint" id="scroll-hint" aria-hidden="true">
+          <span class="scroll-hint__mouse"><span></span></span>
+          <span>Desliza para ordenar los datos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. CONTENEDOR PRINCIPAL: sube sobre el hero -->
+    <div class="panel-wrap">
+      <article class="panel" id="programa" aria-labelledby="programa-title">
+        <div class="panel__bar">
+          <nav class="panel__tabs" aria-label="Secciones del programa">
+            <a class="is-active" href="#programa">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+              Programa
+            </a>
+            <a href="#por-que">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg>
+              ¿Por qué aquí?
+            </a>
+            <a href="#perfiles">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M16.5 14.6c2.6.2 4.4 1.9 5 4.9"/></svg>
+              Perfiles
+            </a>
+            <a href="#resultados">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M5 16l4-5 4 3 6-8"/></svg>
+              Resultados
+            </a>
+            <a href="#mision-vision">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>
+              Misión y visión
+            </a>
+          </nav>
+          <a class="btn btn--primary btn--sm panel__cta" href="#inscripcion">Inscríbete</a>
+        </div>
+
+        <div class="panel__body">
+          <div class="credits" data-reveal>
+            <p class="credits__number" aria-label="140">
+              <span class="count" data-count-to="140">0</span>
+            </p>
+            <h2 class="credits__label" id="programa-title">créditos académicos en total</h2>
+            <p class="credits__text">Es un programa <strong>cuatrimestral</strong>: 10 cuatrimestres en total, es decir, está estimado a terminar en <strong>3 años y unos meses</strong>.</p>
+          </div>
+
+          <figure class="race" id="race" data-reveal aria-labelledby="race-caption">
+            <div class="race__rows">
+              <div class="race__row race__row--ours">
+                <span class="race__name">Ingeniería en Ciencia de Datos<small>10 cuatrimestres</small></span>
+                <div class="race__track">
+                  <div class="race__bar" style="--to: 66.67%">
+                    <span class="race__tag"><strong>50% más rápido</strong> con respecto a otros programas</span>
+                  </div>
+                </div>
+                <span class="race__value">≈ 3,3 años</span>
+              </div>
+              <div class="race__row race__row--others">
+                <span class="race__name">Otros programas<small>10 semestres</small></span>
+                <div class="race__track">
+                  <div class="race__bar" style="--to: 100%"></div>
+                </div>
+                <span class="race__value">5 años</span>
+              </div>
+              <div class="race__row race__row--axis" aria-hidden="true">
+                <span class="race__spacer"></span>
+                <div class="race__axis">
+                  <span style="--x:0%">0</span><span style="--x:20%">1</span><span style="--x:40%">2</span><span style="--x:60%">3</span><span style="--x:80%">4</span><span style="--x:100%">5</span>
+                </div>
+                <span class="race__spacer"></span>
+              </div>
+            </div>
+            <figcaption id="race-caption">Duración del programa (años)</figcaption>
+          </figure>
+
+          <ul class="facts" data-reveal>
+            <li class="fact">
+              <span class="fact__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="13" height="10" rx="1.5"/><path d="M6 18h6"/><rect x="17" y="8" width="4.5" height="12" rx="1"/></svg>
+              </span>
+              <span><span class="fact__key">Modalidad</span> Híbrida: Presencial-virtual</span>
+            </li>
+            <li class="fact">
+              <span class="fact__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/></svg>
+              </span>
+              <span><span class="fact__key">Título a otorgar</span> Ingeniero o ingeniera en ciencia de datos</span>
+            </li>
+          </ul>
+
+          <div class="panel__actions" data-reveal>
+            <a class="btn btn--primary" href="#inscripcion">Quiero inscribirme</a>
+            <a class="btn btn--ghost" href="#perfiles">Conoce el perfil</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- 3. DEMÁS INFORMACIÓN -->
+    <section class="section" id="por-que" aria-labelledby="por-que-title">
+      <div class="container">
+        <p class="eyebrow" data-reveal>¿Por qué estudiarla en la Universidad del Magdalena?</p>
+        <h2 class="section__title" id="por-que-title" data-reveal>Lidera la formación de profesionales que transforman el <span class="grad">futuro digital del Caribe colombiano</span>.</h2>
+        <p class="lead" data-reveal>Estudiar Ingeniería en Ciencia de Datos en esta institución es apostar por la transformación tecnológica, la equidad educativa y la competitividad regional, formando parte de una comunidad reconocida por su excelencia, compromiso social e impacto en el desarrollo sostenible del país.</p>
+        <div class="pillars">
+          <div class="pillar" data-reveal>
+            <span class="pillar__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span>
+            <h3>Transformación tecnológica</h3>
+          </div>
+          <div class="pillar" data-reveal>
+            <span class="pillar__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M5 7l-3 7a3.5 3.5 0 0 0 6 0z"/><path d="M19 7l-3 7a3.5 3.5 0 0 0 6 0z"/><path d="M8 21h8"/></svg></span>
+            <h3>Equidad educativa</h3>
+          </div>
+          <div class="pillar" data-reveal>
+            <span class="pillar__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><rect x="5" y="12" width="3" height="6"/><rect x="10.5" y="8" width="3" height="10"/><rect x="16" y="4" width="3" height="14"/></svg></span>
+            <h3>Competitividad regional</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="perfiles" aria-labelledby="perfil-title">
+      <div class="container">
+        <p class="eyebrow" data-reveal>Perfil profesional</p>
+        <h2 class="section__title" id="perfil-title" data-reveal>Ingenieros con capacidad y liderazgo para <span class="grad">generar valor con datos</span>.</h2>
+        <p class="lead" data-reveal>Profesionales de la ingeniería con capacidad y liderazgo para concebir, diseñar, implementar y operar soluciones computacionales y estadísticas orientadas a la captura, almacenamiento, procesamiento, análisis y aprovechamiento efectivo de datos de diversa naturaleza, generando valor y promoviendo la transformación positiva de las organizaciones y la sociedad.</p>
+
+        <ol class="pipeline" data-reveal aria-label="Ciclo de los datos">
+          <li><span class="pipeline__step">01</span>Captura</li>
+          <li><span class="pipeline__step">02</span>Almacenamiento</li>
+          <li><span class="pipeline__step">03</span>Procesamiento</li>
+          <li><span class="pipeline__step">04</span>Análisis</li>
+          <li><span class="pipeline__step">05</span>Aprovechamiento</li>
+        </ol>
+
+        <div class="aspirant">
+          <div class="aspirant__intro">
+            <p class="eyebrow" data-reveal>Perfil del aspirante</p>
+            <h3 class="aspirant__title" data-reveal>¿Te interesan la tecnología, la innovación y el uso estratégico de la información?</h3>
+            <p data-reveal>El Programa de Ingeniería en Ciencia de Datos está dirigido a personas interesadas en la tecnología, la innovación y el uso estratégico de la información para resolver problemáticas reales. Se orienta tanto a jóvenes con afinidad por la computación y la analítica, como a trabajadores o técnicos que deseen fortalecer sus competencias en áreas relacionadas con la transformación digital y la inteligencia de datos.</p>
+          </div>
+          <div class="aspirant__list">
+            <p class="aspirant__must" data-reveal>Este aspirante debe:</p>
+            <ul class="checklist">
+              <li data-reveal>Poseer título de bachiller o su equivalente.</li>
+              <li data-reveal>Contar con aptitudes en matemáticas, estadística e informática, fundamentales para la comprensión de los modelos computacionales y analíticos.</li>
+              <li data-reveal>Mostrar curiosidad científica, pensamiento lógico y capacidad analítica para procesar e interpretar información compleja.</li>
+              <li data-reveal>Tener interés por las tecnologías emergentes, la programación, la inteligencia artificial, el aprendizaje automático y la gestión de datos.</li>
+              <li data-reveal>Poseer habilidades básicas en el uso de herramientas informáticas y plataformas digitales, y disposición para aprender nuevas tecnologías aplicadas.</li>
+              <li data-reveal>Demostrar capacidad de análisis, organización y trabajo colaborativo, esenciales para abordar proyectos interdisciplinarios.</li>
+              <li data-reveal>Mostrar sentido ético, responsabilidad y compromiso social frente al uso y manejo de la información.</li>
+              <li data-reveal>Tener habilidades comunicativas y disposición para el aprendizaje continuo, necesarias para integrarse a equipos multidisciplinarios en entornos cambiantes y globalizados.</li>
+            </ul>
+          </div>
+        </div>
+        <blockquote class="quote" data-reveal>
+          <p>El programa busca aspirantes con visión crítica, liderazgo y creatividad, comprometidos con el progreso del Magdalena y la Región Caribe, capaces de vincular la ciencia, la tecnología y la innovación con el bienestar social y el desarrollo económico del país.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="section" id="resultados" aria-labelledby="resultados-title">
+      <div class="container">
+        <p class="eyebrow" data-reveal>Resultados de aprendizaje</p>
+        <h2 class="section__title" id="resultados-title" data-reveal>Lo que serás capaz de hacer al graduarte.</h2>
+        <ol class="outcomes">
+          <li class="outcome" data-reveal>
+            <span class="outcome__code">SO1</span>
+            <p>Analiza un problema de computación complejo y aplica principios de computación y otras disciplinas relevantes para identificar soluciones.</p>
+          </li>
+          <li class="outcome" data-reveal>
+            <span class="outcome__code">SO2</span>
+            <p>Diseña, implementa y evalúa una solución basada en computación para satisfacer un conjunto dado de requisitos computacionales en el contexto de la disciplina del programa.</p>
+          </li>
+          <li class="outcome" data-reveal>
+            <span class="outcome__code">SO3</span>
+            <p>Comunica efectivamente en una variedad de contextos profesionales.</p>
+          </li>
+          <li class="outcome" data-reveal>
+            <span class="outcome__code">SO4</span>
+            <p>Reconoce responsabilidad profesional y emite juicios informados en la práctica computacional basados en principios legales y éticos.</p>
+          </li>
+          <li class="outcome" data-reveal>
+            <span class="outcome__code">SO5</span>
+            <p>Funciona efectivamente como miembro o líder de un equipo comprometido en actividades apropiadas a la disciplina del programa.</p>
+          </li>
+          <li class="outcome" data-reveal>
+            <span class="outcome__code">SO6</span>
+            <p>Aplica teoría, técnicas y herramientas durante el ciclo de vida de la ciencia de datos y emplea el conocimiento resultante para satisfacer necesidades de <em>stakeholders</em>.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="mision-vision" aria-label="Misión y visión">
+      <div class="container mv">
+        <article class="mv__card" data-reveal>
+          <p class="eyebrow">Misión</p>
+          <p>Tiene como misión formar ingenieros con capacidad de impulsar la transformación digital y el desarrollo sostenible de la región y el país, a través del análisis y aprovechamiento ético de los datos, aportando soluciones innovadoras en beneficio de la sociedad.</p>
+        </article>
+        <article class="mv__card" data-reveal>
+          <p class="eyebrow">Visión</p>
+          <p>El programa se proyecta como referente regional y nacional en la formación de profesionales íntegros, innovadores y comprometidos con la transformación digital y el desarrollo sostenible. A través de una formación interdisciplinaria, con sólidos fundamentos en matemáticas, estadística y computación, busca generar soluciones basadas en el análisis y gestión responsable de datos, contribuyendo a la modernización productiva, social y ambiental de la región Caribe y el país, y respondiendo a las necesidades actuales y emergentes del entorno.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta" id="inscripcion" aria-labelledby="cta-title">
+      <div class="container cta__inner" data-reveal>
+        <img class="cta__logo" src="assets/logo-512.png" alt="" width="120" height="120" loading="lazy">
+        <h2 id="cta-title">Convierte datos en decisiones que cambian el mundo.</h2>
+        <p>Estudia Ingeniería en Ciencia de Datos y sé parte de la profesión del futuro.</p>
+        <!-- TODO: reemplazar por el enlace oficial de inscripciones -->
+        <a class="btn btn--primary btn--lg" href="#inscripcion">Quiero inscribirme</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>Ingeniería en Ciencia de Datos · Universidad del Magdalena</span>
+      <span class="footer__bits" aria-hidden="true">01001001 01000011 01000100</span>
+    </div>
+  </footer>
+
+  <script src="js/logo-points.js" defer></script>
+  <script src="js/hero.js" defer></script>
+  <script src="js/content.js" defer></script>
+</body>
+</html>
