@@ -51,6 +51,35 @@
     obs.disconnect();
   }, { threshold: 0.55 }).observe(race);
 
+  /* ---------- Pilares: cartas que giran al tocarlas y se inclinan con el mouse ---------- */
+  document.querySelectorAll(".pillar").forEach((card) => {
+    const button = card.querySelector(".pillar__flip");
+    let flipping = 0;
+    button.addEventListener("click", () => {
+      const flipped = card.classList.toggle("is-flipped");
+      button.setAttribute("aria-pressed", String(flipped));
+      // Durante el giro se usa la transición lenta, aunque el mouse siga encima.
+      card.classList.remove("is-tilting");
+      clearTimeout(flipping);
+      flipping = setTimeout(() => { flipping = 0; }, 900);
+    });
+    if (reduceMotion) return;
+    card.addEventListener("pointermove", (ev) => {
+      if (ev.pointerType !== "mouse" || flipping) return;
+      const r = card.getBoundingClientRect();
+      const x = (ev.clientX - r.left) / r.width - 0.5;
+      const y = (ev.clientY - r.top) / r.height - 0.5;
+      card.classList.add("is-tilting");
+      card.style.setProperty("--ry", (x * 14).toFixed(2) + "deg");
+      card.style.setProperty("--rx", (-y * 12).toFixed(2) + "deg");
+    });
+    card.addEventListener("pointerleave", () => {
+      card.classList.remove("is-tilting");
+      card.style.setProperty("--ry", "0deg");
+      card.style.setProperty("--rx", "0deg");
+    });
+  });
+
   /* ---------- Sección activa en la navegación ---------- */
   const links = [...document.querySelectorAll(".site-nav a, .panel__tabs a")];
   const sections = [...new Set(links.map((a) => a.getAttribute("href")))]
