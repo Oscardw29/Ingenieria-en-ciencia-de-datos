@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/logo.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/logo.webp" imagesrcset="assets/logo-640.webp 640w, assets/logo.webp 1200w" imagesizes="min(44vmin, 420px)">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -40,7 +40,10 @@
   </header>
 
   <main>
-    <!-- 1. HERO: la nube de 0 y 1 forma el logo al hacer scroll -->
+    <!-- 1. HERO: la nube de 0 y 1 forma el logo al hacer scroll.
+         El logo ocupa min(64vmin, 620px); "sizes" pide algo menos a propósito para
+         que los teléfonos de densidad 3 descarguen la versión de 640 px: la
+         diferencia no se nota bajo el resplandor y ahorra ~65 KB. -->
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero__sticky">
         <div class="hero__bg" aria-hidden="true">
@@ -50,7 +53,7 @@
         </div>
         <canvas class="hero__canvas" id="particles" aria-hidden="true"></canvas>
         <div class="hero__logo" id="hero-logo">
-          <img src="assets/logo.webp" alt="Logo de Ingeniería en Ciencia de Datos, Universidad del Magdalena" width="1200" height="1200">
+          <img src="assets/logo.webp" srcset="assets/logo-640.webp 640w, assets/logo.webp 1200w" sizes="min(44vmin, 420px)" alt="Logo de Ingeniería en Ciencia de Datos, Universidad del Magdalena" width="1200" height="1200" decoding="async">
         </div>
         <div class="hero__copy" id="hero-copy">
           <h1 class="hero__title" id="hero-title" data-blur-words>Convierte datos en decisiones que cambian el mundo</h1>
@@ -264,7 +267,7 @@
 
     <section class="cta" id="inscripcion" aria-labelledby="cta-title">
       <div class="container cta__inner" data-reveal>
-        <img class="cta__logo" src="assets/logo-512.png" alt="" width="120" height="120" loading="lazy">
+        <img class="cta__logo" src="assets/logo-240.webp" alt="" width="120" height="120" loading="lazy">
         <h2 id="cta-title">Convierte datos en decisiones que cambian el mundo.</h2>
         <p>Estudia Ingeniería en Ciencia de Datos y sé parte de la profesión del futuro.</p>
         <!-- TODO: reemplazar por el enlace oficial de inscripciones -->
