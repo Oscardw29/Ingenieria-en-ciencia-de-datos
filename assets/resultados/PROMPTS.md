@@ -4,7 +4,8 @@ Cada resultado (SO1–SO6) muestra una imagen cuadrada a la derecha de su tarjet
 Guarda cada imagen en esta carpeta con el nombre indicado. Mientras un archivo no
 exista, la página muestra un marco con el código del resultado.
 
-- **Formato:** WebP, 1:1, 1024 × 1024 px (máximo ~120 KB cada una).
+- **Formato:** WebP, 1:1, 1024 × 1024 px (máximo ~150 KB cada una), más una copia de
+  640 × 640 px con el sufijo `-640` (por ejemplo `so1-640.webp`) que usan los teléfonos.
 - **Nombres:** `so1.webp`, `so2.webp`, `so3.webp`, `so4.webp`, `so5.webp`, `so6.webp`.
 - **Estilo común:** añade al final de cada prompt el bloque de estilo para que las seis
   se vean como una serie.
