@@ -184,12 +184,14 @@
     <!-- Santa Marta en datos: la maqueta gira con el scroll (cuadros extraídos de un video,
          assets/santa-marta/) y cada dato se une con una línea a su elemento (js/santa-marta.js) -->
     <section class="section" id="entorno" aria-labelledby="entorno-title">
-      <div class="container">
-        <p class="eyebrow" data-reveal>Los datos en nuestro entorno</p>
-        <h2 class="section__title" id="entorno-title" data-reveal>Santa Marta, <span class="grad">leída como datos</span>.</h2>
-        <p class="lead" data-reveal>Entre la Sierra Nevada y el mar Caribe, cada nube, ola y calle genera información. Así se ve nuestra ciudad con los ojos de un científico de datos.</p>
-      </div>
       <div class="sm-scroll" id="sm-scroll">
+        <!-- Título, texto y maqueta quedan fijos juntos mientras el scroll la gira -->
+        <div class="sm-sticky">
+        <div class="container sm-intro">
+          <p class="eyebrow" data-reveal>Los datos en nuestro entorno</p>
+          <h2 class="section__title" id="entorno-title" data-reveal>Santa Marta, <span class="grad">leída como datos</span>.</h2>
+          <p class="lead" data-reveal>Entre la Sierra Nevada y el mar Caribe, cada nube, ola y calle genera información. Así se ve nuestra ciudad con los ojos de un científico de datos.</p>
+        </div>
         <figure class="sm" aria-labelledby="sm-caption">
           <div class="sm__stage">
             <canvas class="sm__canvas" id="sm-canvas" role="img" aria-label="Maqueta de Santa Marta que gira con el scroll: la Sierra Nevada nevada al fondo, el río, la ciudad junto a la bahía, El Morro y el mar Caribe al frente, con indicadores de humedad, nubosidad, temperatura en la cumbre, cobertura boscosa, caudal del río, calidad del aire, temperatura del mar y oleaje."></canvas>
@@ -197,6 +199,7 @@
           </div>
           <figcaption class="sm__caption" id="sm-caption">Valores ilustrativos, no mediciones reales. Sigue deslizando para girar la maqueta.</figcaption>
         </figure>
+        </div>
       </div>
     </section>
 

@@ -567,16 +567,25 @@ strong { font-weight: 600; color: var(--text); }
 .is-in .viz__area { opacity: 1; }
 .is-in .viz__dot { opacity: 1; animation: node-pulse 1.8s ease-in-out 1.8s infinite; filter: drop-shadow(0 0 6px var(--cyan)); }
 
-/* Santa Marta en datos (js/santa-marta.js): la maqueta queda fija mientras el scroll la gira */
-.sm-scroll { position: relative; height: 340vh; margin-top: clamp(24px, 4vw, 48px); }
+/* Santa Marta en datos (js/santa-marta.js): título, texto y maqueta quedan fijos
+   juntos mientras el scroll gira la maqueta */
+#entorno.section { padding-top: 0; }
+.sm-scroll { position: relative; height: 340vh; margin-top: clamp(96px, 14vw, 160px); }
+.sm-sticky {
+  position: sticky; top: calc(var(--header-h) + 8px);
+  height: calc(100vh - var(--header-h) - 16px); height: calc(100svh - var(--header-h) - 16px);
+  display: flex; flex-direction: column; gap: clamp(14px, 2.4vh, 28px);
+}
+.sm-intro .section__title { font-size: clamp(28px, min(5vw, 6vh), 56px); }
+.sm-intro .lead { margin-top: clamp(10px, 1.6vh, 20px); font-size: clamp(15px, min(1.5vw, 2.1vh), 19px); }
+.sm-intro .eyebrow { margin-bottom: 10px; }
 .sm {
-  position: sticky; top: calc(var(--header-h) + 12px);
+  flex: 1; min-height: 0;
+  display: flex; flex-direction: column;
   width: min(1320px, 100%); margin: 0 auto; padding: 0 var(--gutter);
 }
 .sm__stage {
-  position: relative;
-  height: calc(100vh - var(--header-h) - 70px); height: calc(100svh - var(--header-h) - 70px);
-  max-height: 760px;
+  position: relative; flex: 1; min-height: 0;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   background:
@@ -586,7 +595,7 @@ strong { font-weight: 600; color: var(--text); }
 }
 .sm__canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .sm__labels { position: absolute; inset: 0; pointer-events: none; }
-.sm__caption { margin: 12px 4px 0; font: 400 13px/1.5 var(--mono); color: var(--dim); text-align: center; }
+.sm__caption { margin: 8px 4px 0; font: 400 12px/1.4 var(--mono); color: var(--dim); text-align: center; }
 
 /* Etiquetas: solo texto; una línea las une con su punto en la maqueta */
 .sm-label {
@@ -596,18 +605,20 @@ strong { font-weight: 600; color: var(--text); }
   opacity: 0; transition: opacity .5s var(--ease-out);
   will-change: transform;
 }
+.sm-label[hidden] { display: none; }
 .sm-label.is-on { opacity: 1; }
 .sm-label--end { text-align: right; }
-.sm-label__name { font: 500 10px/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: rgba(255, 255, 255, .7); }
+.sm-label__name { font: 500 10px/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: rgba(255, 255, 255, .7); overflow: hidden; text-overflow: ellipsis; }
 .sm-label__value { font-size: 19px; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
 .sm-label__value small { margin-left: 4px; font: 500 11px/1 var(--mono); color: rgba(255, 255, 255, .7); }
+/* Vista compacta (la decide js/santa-marta.js según el ancho del escenario) */
+.sm-label--compact { text-align: center; }
+.sm-label--compact .sm-label__name { font-size: 9px; }
+.sm-label--compact .sm-label__value { font-size: 15px; }
 @media (max-width: 760px) {
   .sm-scroll { height: 280vh; }
-  .sm { top: calc(var(--header-h) + 8px); padding: 0 10px; }
-  .sm__stage { height: min(calc(100svh - var(--header-h) - 70px), 520px); border-radius: 20px; }
-  .sm-label { text-align: center; }
-  .sm-label__name { font-size: 9px; }
-  .sm-label__value { font-size: 15px; }
+  .sm { padding: 0 10px; }
+  .sm__stage { border-radius: 20px; }
 }
 
 /* Pipeline de datos */
@@ -878,7 +889,8 @@ strong { font-weight: 600; color: var(--text); }
   .is-in.pipeline li { animation: none; }
   .pillars .pillar[data-reveal], .viz *, .sm-label, .outcome__card, .outcome__media { transition: none !important; animation: none !important; filter: none; }
   .sm-scroll { height: auto; }
-  .sm { position: static; }
+  .sm-sticky { position: static; height: auto; }
+  .sm__stage { height: 70vh; flex: none; }
   .flow { height: auto; }
   .flow__sticky { position: static; height: auto; }
   .flow__stage { height: 60vh; flex: none; }

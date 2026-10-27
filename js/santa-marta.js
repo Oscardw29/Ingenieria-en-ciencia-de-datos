@@ -13,9 +13,11 @@
   const stage = canvas.parentElement;
   const ctx = canvas.getContext("2d");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const small = window.innerWidth < 760;
+  // Los cuadros se eligen una vez según la pantalla; la distribución de las
+  // etiquetas (compacta o en columnas) se decide con el ancho real del escenario.
   const FRAMES = TRACK.frames;
-  const DIR = `assets/santa-marta/${small ? "mobile" : "desktop"}/`;
+  const DIR = `assets/santa-marta/${window.innerWidth < 760 ? "mobile" : "desktop"}/`;
+  let compact = false;
 
   /* ---------- Indicadores ----------
      point: elemento seguido en el video. Escritorio: lado (-1 izquierda, 1 derecha);
@@ -29,7 +31,7 @@
     { name: "Calidad del aire", short: "Aire", point: "city", unit: "ICA", base: 38, amp: 6, dec: 0, side: 1, band: 1 },
     { name: "Temp. del mar", short: "Temp. mar", point: "sea", unit: "°C", base: 28.6, amp: 0.3, dec: 1, side: -1, band: 1 },
     { name: "Altura de ola", short: "Oleaje", point: "beach", unit: "m", base: 1.2, amp: 0.3, dec: 1, side: 1, band: 1 },
-  ].filter((d) => !(small && d.desktop));
+  ];
 
   const fmt = (n, dec) => n.toLocaleString("es-CO", { minimumFractionDigits: dec, maximumFractionDigits: dec });
   INDICATORS.forEach((d) => {
@@ -37,8 +39,8 @@
     const el = document.createElement("div");
     el.className = "sm-label";
     el.innerHTML = `<span class="sm-label__name"></span><span class="sm-label__value"><b></b><small></small></span>`;
-    el.querySelector(".sm-label__name").textContent = small && d.short ? d.short : d.name;
     el.querySelector("small").textContent = d.unit;
+    d.nameEl = el.querySelector(".sm-label__name");
     d.valueEl = el.querySelector("b");
     d.valueEl.textContent = fmt(d.base, d.dec);
     d.el = el;
@@ -88,7 +90,8 @@
     canvas.height = Math.round(H * dpr);
     // La maqueta ocupa el centro; en escritorio quedan columnas para las etiquetas
     // y en móvil franjas arriba y abajo.
-    const room = small ? { w: W - 16, h: H - 2 * 64 } : { w: W - 2 * (LABEL_W + 32), h: H - 24 };
+    compact = W < 640;
+    const room = compact ? { w: W - 16, h: H - 2 * 64 } : { w: W - 2 * (LABEL_W + 32), h: H - 24 };
     const w = Math.min(room.w, room.h * TRACK.aspect);
     img = { w, h: w / TRACK.aspect, x: (W - w) / 2, y: (H - w / TRACK.aspect) / 2 };
     layoutLabels();
@@ -96,11 +99,19 @@
   }
 
   function layoutLabels() {
-    if (!small) {
+    // En la vista compacta se ocultan los indicadores marcados solo para escritorio.
+    INDICATORS.forEach((d) => {
+      d.hidden = compact && d.desktop;
+      d.el.hidden = d.hidden;
+      d.nameEl.textContent = compact && d.short ? d.short : d.name;
+      d.el.classList.toggle("sm-label--compact", compact);
+    });
+    const shown = INDICATORS.filter((d) => !d.hidden);
+    if (!compact) {
       // Columnas a los costados; las filas siguen el orden vertical de los puntos
       // en el primer cuadro para que las líneas no se crucen.
       [-1, 1].forEach((side) => {
-        const col = INDICATORS.filter((d) => d.side === side).sort((a, b) => TRACK.points[a.point][0][1] - TRACK.points[b.point][0][1]);
+        const col = shown.filter((d) => d.side === side).sort((a, b) => TRACK.points[a.point][0][1] - TRACK.points[b.point][0][1]);
         const rowH = 44, gap = Math.min(56, (H - 48 - col.length * rowH) / Math.max(1, col.length - 1));
         const y0 = (H - (col.length * rowH + (col.length - 1) * gap)) / 2;
         col.forEach((d, n) => {
@@ -114,7 +125,7 @@
       // Móvil: tres arriba y tres abajo; columnas según la posición horizontal.
       const w = (W - 24 - 20) / 3;
       [0, 1].forEach((band) => {
-        const row = INDICATORS.filter((d) => d.band === band).sort((a, b) => TRACK.points[a.point][0][0] - TRACK.points[b.point][0][0]);
+        const row = shown.filter((d) => d.band === band).sort((a, b) => TRACK.points[a.point][0][0] - TRACK.points[b.point][0][0]);
         row.forEach((d, n) => {
           d.lx = 12 + n * (w + 10);
           d.ly = band === 0 ? 10 : H - 46;
@@ -123,7 +134,7 @@
         });
       });
     }
-    INDICATORS.forEach((d) => {
+    shown.forEach((d) => {
       d.el.style.transform = `translate(${Math.round(d.lx)}px, ${Math.round(d.ly)}px)`;
       d.el.style.width = d.w + "px";
       d.el.classList.toggle("sm-label--end", d.end);
@@ -165,10 +176,11 @@
     ctx.fillStyle = "#ffffff";
     ctx.lineWidth = 1;
     INDICATORS.forEach((d) => {
+      if (d.hidden) return;
       d.el.classList.add("is-on");
       const [px, py] = pointAt(d.point, f);
       let sx, sy;
-      if (!small) { sx = d.end ? d.lx + d.w + 10 : d.lx - 10; sy = d.ly + d.h / 2; }
+      if (!compact) { sx = d.end ? d.lx + d.w + 10 : d.lx - 10; sy = d.ly + d.h / 2; }
       else { sx = d.lx + d.w / 2; sy = d.band === 0 ? d.ly + d.h + 6 : d.ly - 6; }
       ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(px, py); ctx.stroke();
       ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI * 2); ctx.fill();
@@ -223,7 +235,8 @@
     if (visible && !was) requestAnimationFrame(loop);
   }).observe(stage);
 
-  window.addEventListener("resize", () => { if (stage.clientWidth !== W || stage.clientHeight !== H) resize(); });
-  if (document.fonts) document.fonts.ready.then(resize, () => {});
+  // El escenario cambia de tamaño con la ventana y con el texto que tiene encima
+  // (fuentes, orientación del teléfono): se vuelve a distribuir cada vez.
+  new ResizeObserver(() => { if (stage.clientWidth !== W || stage.clientHeight !== H) resize(); }).observe(stage);
   resize();
 })();
